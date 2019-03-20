@@ -1,0 +1,70 @@
+	{% extends 'rango/base_bootstrap.html' %}
+	{% load staticfiles %}
+	{% block title_block %}
+	    Index
+	{% endblock %}
+	{% block body_block %}
+
+		<div class="jumbotron"
+             style="background-image:url(\{% static 'images/background.jpg' %});
+             background-repeat:no-repeat;background-size:cover"
+
+             width="100%" >
+        <h1 class="display-3">
+            <font size="30" color="white">
+                Welcome to UoG Second Hand Trade</font></h1>
+
+			{% if user.is_authenticated %}
+			<span style="margin-left:30px;font-size:30px"><!--#修改字体-->
+                <font size="18" color="white">Hello ! {{ user.username }}!</font>
+			</span>
+			{% else %}
+            <font size="30" color="white">
+                Welcome !Please Sign Up!Enjoy your trade!!!</font>
+
+			{% endif %}
+		</div>
+	<!--#我是买家，这里直接跳转买家页面-->
+    <div id="da"  style="width:3000px; height:500px; overflow:hidden;">
+		<div class="row marketing">
+			<div class="col-lg-6"
+           style="background-image:url(\{% static 'images/buy.png' %});
+             background-repeat:no-repeat;background-position:right;" >
+                <button type="submit" class="btn btn-default"
+                        style="margin-right:150px;font-size:150px" onclick="buy()">
+                        BUY
+                    </button>
+                <script>
+                function buy(){
+            window.location.href="{% url 'showitem' %}";}
+                </script>
+
+				<!--#我是买家，这里合并的时候直接跳转商品-->
+		<!--#我是卖家，这里直接跳转卖家页面-->
+
+				<div class="col-lg-6"
+                style="background-image:url(\{% static 'images/sell.jpg' %});
+             background-repeat:no-repeat;background-position:right;">
+                    <button type="submit" class="btn btn-default"
+                        style="margin-right:150px;font-size:150px" onclick="tz()">
+                        SELL
+                    </button>
+                <script>
+                function tz(){
+            window.location.href="{% url 'adpost' %}";}
+                </script>
+						<!--#我是买家，这里合并的时候直接跳转发产品-->
+					<!--#这里需要放产品-->
+				</div>
+            </div>
+
+		</div>
+
+<!--#主要的产品展示-->
+
+
+
+
+    {% endblock %}
+	<!--#这里需要放产品
+        <img src="{% static "images/rango.jpg" %}" alt="Picture of Rango" />-->
